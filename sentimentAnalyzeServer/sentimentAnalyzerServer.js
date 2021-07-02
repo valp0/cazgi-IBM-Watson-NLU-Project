@@ -57,14 +57,12 @@ app.get("/text/emotion", (req, res, next) => {
     const analyzeParams = {
         'text': req.query.text,
         'features': {
-            'emotion': {
-            }
+            'emotion': {}
         }
     };
 
     nlu.analyze(analyzeParams).then(analysisResults => {
         let output = analysisResults.result.emotion.document.emotion;
-        // let output = analysisResults;
         console.log(output);
         return res.send(output);
     }).catch(err => {
